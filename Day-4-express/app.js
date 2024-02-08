@@ -1,8 +1,22 @@
 const express = require('express');
+
+const morgan = require('morgan');
+
+const myMiddlewareFunction = require('./Middlewares/middle')
+const myMiddlewareFunction1 = require('./Middlewares/middle_2.js')
+
+
+
 const app = express();
 
 // Middleware to parse JSON in request body
 app.use(express.json());
+
+app.use(myMiddlewareFunction)
+
+app.use(myMiddlewareFunction1)
+
+app.use(morgan())
 
 let courses = [
     { id: 1, name: 'Javascript' },
